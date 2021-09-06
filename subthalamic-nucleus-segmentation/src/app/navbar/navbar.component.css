@@ -1,0 +1,46 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+  
+  #sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+  }
+  
+  li a {
+    width: 100%;
+    text-align: start;
+    position: relative;
+  }
+  
+  .dropdown-toggle::after {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+  }
+  
+  .sidebar-header img {
+    width: 50%;
+  }
+  
+  .sidebar-header{
+    background: #214587;
+    background: linear-gradient(90deg, #5274B5 15%, #214587 43%);
+  }
+  
+  #navbar  {
+    background:#214587;
+    background-size: 600px;
+  }
+  
+  ul li {
+    background-color: transparent;
+  }
+  
+  h4 {
+    font-size: 9pt;
+  }

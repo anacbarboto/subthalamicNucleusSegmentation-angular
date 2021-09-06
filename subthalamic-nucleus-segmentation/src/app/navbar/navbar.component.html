@@ -1,0 +1,32 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="btn border-0 sidebar-header d-flex flex-column align-items-center py-4" routerLink="/perfil">
+          <!-- <h3 class="text-white mt-4 mb-0">{{ user.first_name }} {{user.last_name}}</h3>-->
+          <h3 class="text-white mt-4 mb-0">Ana Carrión</h3>
+        </div>
+
+        <ul class="list-group menu-elements h-100 bg-light-gray">
+          <li class="list-group-item border-0">
+            <a routerLink="/modelos" data-toggle="collapse" aria-expanded="false" class="btn">Modelos</a>
+          </li>
+          <li class="list-group-item border-0">
+            <a routerLink="/usuarios" data-toggle="collapse" aria-expanded="false" class="btn">Usuarios</a>
+          </li>
+          <li class="list-group-item border-0">
+            <a routerLink="/imagenes" data-toggle="collapse" aria-expanded="false" class="btn">Imágenes</a>
+          </li>
+          <li class="list-group-item border-0">
+            <a routerLink="/principal" data-toggle="collapse" aria-expanded="false" class="btn">Segmentador</a>
+          </li>
+        </ul>
+
+        <div>
+          <a (click)="logout()" class="btn">Cerrar sesión</a>
+        </div>
+    </nav>
+    
+    <div id="content" class="w-100">
+        <router-outlet></router-outlet>
+    </div>
+</div>

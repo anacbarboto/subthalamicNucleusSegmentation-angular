@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="text-center m-5">
+    <h1>M O D E L O S</h1>
+  </div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-block">
+                    <div class="table-overflow">
+                        <table class="table table-lg table-hover">
+                            <thead class="text-center bg-blue">
+                                <tr>
+                                    <th>Nombre del Modelo</th>
+                                    <th>Usario</th>
+                                    <th>Fecha</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center" *ngFor="let modelo of modelos; index as i">
+                                <tr>
+                                    <td>
+                                        <div class="relative mrg-top-15">
+                                            <span class="pdd-left-20">{{modelo.id}}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="relative mrg-top-15" *ngIf="modelo.is_active">
+                                            <i class="fas fa-check text-success"></i>
+                                        </div>
+                                        <div class="relative mrg-top-15" *ngIf="!modelo.is_active">
+                                          <i class="fas fa-times text-danger"></i>
+                                      </div>
+                                    </td>
+                                    <td>
+                                        <div class="mrg-top-15">
+                                            <span>{{modelo.queue_count}}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="mrg-top-10 text-center">
+                                            <button class="btn btn-icon btn-flat btn-rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                              <a class="dropdown-item" (click)="openChangemodeloStatusDialog(modelo.id, i)">Desactivar Máquina</a>
+                                              <a class="dropdown-item" (click)="acceptConfirmDialog(modelo.id, i)">Activar Máquina</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                              </tbody>
+                        </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>

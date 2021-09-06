@@ -1,0 +1,60 @@
+<div class="container-fluid h-100 background">
+
+    <div class="row h-100">
+  
+      <div class="col d-flex flex-column justify-content-center">
+        <div class="container w-25 py-5 g-blue shadow login-background">
+
+          <div class="text-center mb-5 text-black">
+            <h3><b>Segmentador del Núcleo Subtalámico y Sustancia Negra</b></h3>
+          </div>
+  
+          <form [formGroup]="form" (ngSubmit)="submitted = true; login()">
+  
+            <div *ngIf="failed" class="text-danger">Usuario o contraseña incorrectos</div>
+  
+            <div class="form-group">
+              <input placeholder="Usuario" type="text" class="form-control" formControlName="username" required
+              [ngClass]="{ 'is-invalid': f.username.invalid && (f.username.dirty || f.username.touched || submitted) }">
+  
+              <div *ngIf="f.username.invalid && (f.username.dirty || f.username.touched || submitted)" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Nombre de usuario requerido</div>
+              </div>
+  
+            </div>
+  
+            <div class="form-group input-group">
+              <input placeholder="Contraseña" [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="password" required
+              [ngClass]="{ 'is-invalid': f.password.invalid && (f.password.dirty || f.password.touched || submitted) }">
+  
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i
+                    class="fa"
+                    [ngClass]="{
+                      'fa-eye-slash': !fieldTextType,
+                      'fa-eye': fieldTextType
+                    }"
+                    (click)="toggleFieldTextType()"
+                  ></i>
+                </span>
+              </div>
+  
+              <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched || submitted)" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Contraseña requerida</div>
+              </div>
+            </div>
+  
+            <div class="form-group one-button">
+              <button [disabled]="loading" type="submit" class="btn bg-blue w-100">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                <b>Iniciar sesión</b>
+              </button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

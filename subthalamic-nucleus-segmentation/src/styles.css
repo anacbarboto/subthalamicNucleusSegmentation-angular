@@ -1,0 +1,83 @@
+html, body { height: 100%; }
+body { margin: 0 }
+* {font-family: 'Poppins', sans-serif; }
+
+.bg-blue {
+    background-color: #5274B5;
+    color: white;
+}
+
+.bg-purple {
+	background-color: #631b70;
+	color: white;
+  }
+  
+  .bg-pink {
+	background-color: #cb1189;
+	color: white;
+  }
+  
+  .bg-grey {
+	background-color: #727176;
+	color: white;
+  }
+  
+  .bg-light-gray {
+	background-color: #edeef0;
+  }
+  
+  .bg-only-black {
+	background-color: black;
+	color: white;
+  }
+  
+  .bg-black {
+	  background-color: black;
+	  color: white;
+  }
+  
+  .bg-black:hover {
+	background-color: #631b70;
+	color: white;
+  }
+  
+  a:not([href]) {
+	  cursor: pointer;
+  }
+  
+  .list-group-item.active {
+	background-color: transparent;
+  }
+  
+  .list-group-item.active .btn {
+	color: #d117a5!important;
+  }
+  
+  .one-button{
+	text-align: center;
+  }
+  
+  .text-pink {
+	color: #cb1189;
+  }
+  
+  .text-purple {
+	color: #631b70;
+  }
+  
+  .background{
+	background-image: url("/assets/images/resonancia.png");
+	background-position: center center;
+	background-size: cover;
+	background-color: #5274B5;
+  }
+
+  .login-background{
+	background-color: white;
+	border-radius: 10px;
+  }
+  
+  .active {
+	color: #5274B5!important;
+  }
+  

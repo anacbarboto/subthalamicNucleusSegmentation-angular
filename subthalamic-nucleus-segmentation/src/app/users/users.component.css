@@ -1,0 +1,14 @@
+.box {
+    background: #f7f5f5;
+    font-weight: bold;
+    padding: 15px;
+    border-left: 8px solid #ff0080;
+    border-radius: 8px;
+    width: 200px;
+    height: 200px;
+}
+  
+h1 {
+    font-weight: 600;
+    font-size: 15pt;
+}
