@@ -36,18 +36,20 @@
                                     </td>
                                     <td>
                                         <div class="relative mrg-top-15">
-                                            <span class="pdd-left-20">{{user.role}}</span>
+                                            <span *ngIf="user.role == 0" class="pdd-left-20">Administrador</span>
+                                            <span *ngIf="user.role == 1" class="pdd-left-20">Especialista</span>
+                                            <span *ngIf="user.role == 2" class="pdd-left-20">Estudiante</span>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="mrg-top-10 text-center">
-                                            <button class="btn btn-icon btn-flat btn-rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                              <a class="dropdown-item" (click)="deleteUser(user.id, i)">Eliminar</a>
-                                              <a class="dropdown-item" (click)="updateUser(user.id, i)">Editar</a>
-                                            </div>
-                                        </div>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" (click)="deleteModel(modelo.id)">Editar</a></li>
+                                                <li><a class="dropdown-item" (click)="deleteModel(modelo.id)">Eliminar</a></li>
+                                            </ul>
+                                          </div>
                                     </td>
                                 </tr>
                               </tbody>

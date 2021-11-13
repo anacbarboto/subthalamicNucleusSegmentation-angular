@@ -20,7 +20,15 @@ export class ImageService extends ApiService{
     return this.http.get<Image[]>(`${this.API_URL}/images/`, options);
   }
 
+  public getImage(id): Observable<Image>{
+    return this.http.get<Image>(`${this.API_URL}/images/${id}/`, this.authOptions);
+  }
+
   public createImage(image): Observable<any>{
     return this.http.post(`${this.API_URL}/images/`, image, this.authOptions);
+  }
+
+  public getSegmentation(images): Observable<any> {
+    return this.http.post<Image>(`${this.API_URL}/images/segmentate/`, images, this.authOptions);
   }
 }

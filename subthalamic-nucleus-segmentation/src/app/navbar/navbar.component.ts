@@ -10,13 +10,16 @@ import { User } from '../helpers/models/user.model';
 export class NavbarComponent implements OnInit {
 
   user: User;
+  user_name: String;
+  user_lastname: String;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user_name = JSON.parse(localStorage.getItem('first_name'));
+    this.user_lastname = JSON.parse(localStorage.getItem('last_name'));
   }
 
   public logout(): void {

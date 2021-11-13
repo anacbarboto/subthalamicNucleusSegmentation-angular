@@ -63,5 +63,4 @@ export class LoginComponent implements OnInit {
       err => this.failed = true
     );
   }
-
 }

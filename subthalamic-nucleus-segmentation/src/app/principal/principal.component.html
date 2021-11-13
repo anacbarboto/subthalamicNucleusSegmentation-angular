@@ -5,28 +5,46 @@
         <div class="row">
             <div class="col-6">
                 <p><b>Resonancia magnética T1 (.nii.gz):</b></p>
-                <input id="t1-selector" class="form-control border-0" type="file">
+                <input id="t1-selector" class="form-control border-0" type="file" (change)="seleccionarT1($event.target.files[0])">
+                <div *ngIf="t1Uploaded == true">
+                    <span>Imagen T1 subida con exito.</span>
+                </div>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-6">
                 <p><b>Resonancia magnética T2 (.nii.gz):</b></p>
-                <input id="t2-selector" class="form-control border-0" type="file">
+                <input id="t2-selector" class="form-control border-0" type="file" (change)="seleccionarT2($event.target.files[0])">
+                <div *ngIf="t2Uploaded == true">
+                    <span>Imagen T2 subida con exito.</span>
+                </div>
             </div>
-            <div class="col-6">
-                <button id="segment-button" class="btn bg-blue float-right" type="file">Segmentar</button>
+        </div>
+        <div class="row mt-5">
+            <div class="col">
+                <button id="segment-button" class="btn bg-blue float-right" type="file" (click)="subirImagenes()">Subir imagenes</button>
+            </div>
+            <div class="col">
+                <button id="segment-button" class="btn bg-blue float-right" type="file" (click)="segmentar()" [disabled]="enableButton">Segmentar</button>
             </div>
         </div>
         <hr class="mt-5 mb-5">
         <div class="row">
             <div class="col">
-                <p><b>Resultado de segmentación (.nii.gz):</b></p>
-                <div style="width:750px; height: 750px;">
-                    <div class="papaya"></div>
+                <p><b>Resultado de segmentación (.nii.gz):</b></p>disableddsadsad
+                <model-viewer src="http://147.182.179.46/media/uploads/images/1/IXIHH012.nii">
+                </model-viewer>
+                <div class="papaya">
                 </div>
+                <div style="height: 100%; width:100%;">
+                    <dicom-viewer [enableViewerTools]="true" style="height:100%; width:100%; margin: 10px;"></dicom-viewer>
+                  </div>
             </div>
             <div class="col">
-                <button id="download-button" class="btn bg-blue float-right" type="file">Descargar Resultado</button>
+                <button id="download-button" class="btn bg-blue float-right" type="file" (click)="downloadImage()">Descargar Resultado</button>
+            </div>
+            <div class="col">
+                <button id="" class="btn bg-blue float-right" type="file" (click)="mostrarImagen()">Mostrar Resultado</button>
             </div>
         </div>
     </div>

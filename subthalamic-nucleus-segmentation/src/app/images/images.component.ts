@@ -36,11 +36,11 @@ export class ImagesComponent implements OnInit {
 
   getT1(): void {
     this.t1 = true;
-    this.imageService.getImages({type: ImageStatus.T1}).subscribe(res => this.images = res);
+    this.imageService.getImages({type: ImageStatus.T1}).subscribe(res => {this.images = res; console.log(res)});
   }
 
   getT2(): void {
     this.t1 = false;
-    this.imageService.getImages({type: ImageStatus.T2}).subscribe(res => this.images = res);
+    this.imageService.getImages({type: ImageStatus.T2}).subscribe(res => {this.images = res; console.log(res)});
   }
 }

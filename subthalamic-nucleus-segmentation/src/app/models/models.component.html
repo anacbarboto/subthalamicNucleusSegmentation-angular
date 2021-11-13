@@ -11,8 +11,8 @@
                             <thead class="text-center bg-blue">
                                 <tr>
                                     <th>Nombre del Modelo</th>
-                                    <th>Usario</th>
-                                    <th>Fecha</th>
+                                    <th>Usuario</th>
+                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -20,31 +20,31 @@
                                 <tr>
                                     <td>
                                         <div class="relative mrg-top-15">
-                                            <span class="pdd-left-20">{{modelo.id}}</span>
+                                            <span class="pdd-left-20">{{modelo.path.split("/")[6].split(".")[0]}}</span>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="relative mrg-top-15" *ngIf="modelo.is_active">
-                                            <i class="fas fa-check text-success"></i>
-                                        </div>
-                                        <div class="relative mrg-top-15" *ngIf="!modelo.is_active">
-                                          <i class="fas fa-times text-danger"></i>
-                                      </div>
                                     </td>
                                     <td>
                                         <div class="mrg-top-15">
-                                            <span>{{modelo.queue_count}}</span>
+                                            <!---<span>{{users[modelo.user]}}</span> --->
+                                            <span>{{modelo.user}}</span>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="mrg-top-10 text-center">
-                                            <button class="btn btn-icon btn-flat btn-rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                              <a class="dropdown-item" (click)="openChangemodeloStatusDialog(modelo.id, i)">Desactivar Máquina</a>
-                                              <a class="dropdown-item" (click)="acceptConfirmDialog(modelo.id, i)">Activar Máquina</a>
-                                            </div>
+                                        <div class="mrg-top-15">
+                                            <span *ngIf="modelo.is_active">Activo</span>
+                                            <span *ngIf="!modelo.is_active">Inactivo</span>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                              <li><a *ngIf="!modelo.is_active" class="dropdown-item" (click)="updateStatus(modelo.id, i, true)">Activar</a></li>
+                                              <li><a *ngIf="modelo.is_active" class="dropdown-item" (click)="updateStatus(modelo.id, i, false)">Desactivar</a></li>
+                                              <li><a class="dropdown-item" (click)="deleteModel(modelo.id)">Eliminar</a></li>
+                                            </ul>
+                                          </div>
                                     </td>
                                 </tr>
                               </tbody>

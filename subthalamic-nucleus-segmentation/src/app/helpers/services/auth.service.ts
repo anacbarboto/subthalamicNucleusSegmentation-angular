@@ -12,6 +12,13 @@ import { Router } from '@angular/router';
 })
 export class AuthService extends ApiService{
 
+  formData: any = new FormData();
+
+  credentials = {
+    username: null,
+    password: null,
+  };
+
   constructor(
     private http: HttpClient,
     private router: Router) {
@@ -19,24 +26,23 @@ export class AuthService extends ApiService{
   }
 
   public login(username: string, password: string): Observable<LoginResponse> {
-    const authData = btoa(`${username}:${password}`);
-    console.log(authData);
-    return this.http.post<LoginResponse>(`${this.API_URL}/login/`, {}, {
-      headers: new HttpHeaders({
-        Authorization: `Basic ${authData}`
-      })
-    }).pipe(
+    this.credentials.username = username;
+    this.credentials.password = password;
+
+    return this.http.post<LoginResponse>(`${this.AUTH_URL}/login/`, this.credentials).pipe(
       map(response => {
-        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('id', JSON.stringify(response.id));
+        localStorage.setItem('username', JSON.stringify(response.username));
+        localStorage.setItem('first_name', JSON.stringify(response.first_name));
+        localStorage.setItem('last_name', JSON.stringify(response.last_name));
         localStorage.setItem('token', response.token);
-        console.log(response);
         return response;
       })
     );
   }
 
   public logout(): Observable<any> {
-    return this.http.post(`${this.API_URL}/logout/`, {}, this.authOptions).pipe(
+    return this.http.post(`${this.AUTH_URL}/logout/`, {}, this.authOptions).pipe(
       map(res => {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
@@ -46,7 +52,7 @@ export class AuthService extends ApiService{
   }
 
   public isAuth(): Observable<boolean> {
-    return this.http.get(`${this.API_URL}/auth/`, this.authOptions).pipe(
+    return this.http.get(`${this.AUTH_URL}/auth/`, this.authOptions).pipe(
       map(res => true),
       catchError(err => {console.log(err); return of(false); })
     );

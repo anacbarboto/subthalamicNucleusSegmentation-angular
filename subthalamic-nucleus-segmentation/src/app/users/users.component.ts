@@ -26,11 +26,11 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(res => this.users = res);
   }
 
-  deleteUser(): void {
+  deleteUser(id): void {
 
   }
 
-  updateUser(): void {
+  updateUser(id): void {
     
   }
 
