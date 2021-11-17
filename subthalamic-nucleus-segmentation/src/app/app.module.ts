@@ -15,8 +15,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from './users/users.component';
 
-import { DicomViewerModule } from 'ng-dicomviewer';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +31,6 @@ import { DicomViewerModule } from 'ng-dicomviewer';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    DicomViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

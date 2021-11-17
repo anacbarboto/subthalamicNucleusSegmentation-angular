@@ -19,9 +19,8 @@
     ]
   },
   "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": false
   },
 }

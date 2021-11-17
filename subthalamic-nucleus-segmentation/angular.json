@@ -27,14 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/papaya.css"
             ],
             "scripts": [
-              "node_modules/cornerstone-core/dist/cornerstone.js",
-              "node_modules/cornerstone-math/dist/cornerstoneMath.js",
-              "node_modules/cornerstone-tools/dist/cornerstoneTools.js",
-              "node_modules/dicom-parser/dist/dicomParser.js",
-              "src/assets/cornerstone/lib/cornerstoneWADOImageLoader.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/papaya.js",
+              "src/assets/js/script.js"
             ]
           },
           "configurations": {

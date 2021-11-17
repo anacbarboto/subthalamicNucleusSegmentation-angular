@@ -1,51 +1,55 @@
-<main>
-    <div class="container mt-5">
-        <h1 class="text-center mb-5">Segmentanción del Nucleo Subtalámico y Sustancia Negra</h1>
-        <hr class="mt-5 mb-5">
-        <div class="row">
-            <div class="col-6">
-                <p><b>Resonancia magnética T1 (.nii.gz):</b></p>
-                <input id="t1-selector" class="form-control border-0" type="file" (change)="seleccionarT1($event.target.files[0])">
-                <div *ngIf="t1Uploaded == true">
-                    <span>Imagen T1 subida con exito.</span>
-                </div>
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Segmentanción del Nucleo Subtalámico y Sustancia Negra</h1>
+    <hr class="mt-5">
+    <p><b>1. SUBIR IMAGENES DE RESONANCIA MAGNETICA</b></p>
+    <div class="row">
+        <div class="col-6">
+            <p><b>Resonancia magnética T1 (.nii.gz):</b></p>
+            <input id="t1-selector" class="form-control border-0" type="file" (change)="seleccionarT1($event.target.files[0])">
+            <div *ngIf="t1Uploaded == false">
+                <span>Imagen T1 subida con exito.</span>
             </div>
         </div>
-        <div class="row mt-5">
-            <div class="col-6">
-                <p><b>Resonancia magnética T2 (.nii.gz):</b></p>
-                <input id="t2-selector" class="form-control border-0" type="file" (change)="seleccionarT2($event.target.files[0])">
-                <div *ngIf="t2Uploaded == true">
-                    <span>Imagen T2 subida con exito.</span>
-                </div>
-            </div>
+        <div class="col">
+            <button class="btn bg-blue float-right" type="file" (click)="subirT1()">Subir T1</button>
         </div>
-        <div class="row mt-5">
-            <div class="col">
-                <button id="segment-button" class="btn bg-blue float-right" type="file" (click)="subirImagenes()">Subir imagenes</button>
-            </div>
-            <div class="col">
-                <button id="segment-button" class="btn bg-blue float-right" type="file" (click)="segmentar()" [disabled]="enableButton">Segmentar</button>
-            </div>
-        </div>
-        <hr class="mt-5 mb-5">
-        <div class="row">
-            <div class="col">
-                <p><b>Resultado de segmentación (.nii.gz):</b></p>disableddsadsad
-                <model-viewer src="http://147.182.179.46/media/uploads/images/1/IXIHH012.nii">
-                </model-viewer>
-                <div class="papaya">
-                </div>
-                <div style="height: 100%; width:100%;">
-                    <dicom-viewer [enableViewerTools]="true" style="height:100%; width:100%; margin: 10px;"></dicom-viewer>
-                  </div>
-            </div>
-            <div class="col">
-                <button id="download-button" class="btn bg-blue float-right" type="file" (click)="downloadImage()">Descargar Resultado</button>
-            </div>
-            <div class="col">
-                <button id="" class="btn bg-blue float-right" type="file" (click)="mostrarImagen()">Mostrar Resultado</button>
-            </div>
+        <div class="col">
+            <button class="btn bg-blue float-right" type="file" (click)="showT1()" [disabled]="t1Uploaded">Visualizar T1</button>
         </div>
     </div>
-</main>
+    <div class="row mt-5">
+        <div class="col-6">
+            <p><b>Resonancia magnética T2 (.nii.gz):</b></p>
+            <input id="t2-selector" class="form-control border-0" type="file" (change)="seleccionarT2($event.target.files[0])">
+            <div *ngIf="t2Uploaded == false">
+                <span>Imagen T2 subida con exito.</span>
+            </div>
+        </div>
+        <div class="col">
+            <button class="btn bg-blue float-right" type="file" (click)="subirT2()">Subir T2</button>
+        </div>
+        <div class="col">
+            <button class="btn bg-blue float-right" type="file" (click)="showT2()" [disabled]="t2Uploaded">Visualizar T2</button>
+        </div>
+    </div>
+    <hr class="mt-5">
+    <p><b>2. SEGMENTAR LOS NUCLEOS</b></p>
+    <div class="row mt-5">
+        <div class="col">
+            <button class="btn bg-blue float-left mr-3" type="file" (click)="segmentar()" [disabled]="enableButton">Segmentar</button>
+            <button class="btn bg-blue float-left" type="file" (click)="showResult()" [disabled]="segmentationDone">Visualizar Resultado</button>
+        </div>
+    </div>
+    <hr class="mt-5 mb-5">
+    <p><b>3. DESCARGAR RESULTADOS</b></p>
+    <div class="row" id="padre">
+        <button id="download-button" class="btn bg-blue float-right" type="file" (click)="downloadImage()" [disabled]="segmentationDone">Descargar Resultado</button>
+    </div>
+    <hr class="mt-5 mb-5">
+    <p><b>VISUALIZADOR DE IMAGENES</b></p>
+    <div class="row" id="padre">
+        <div class="col"  id="hermano">
+           
+        </div>
+    </div>
+</div>
